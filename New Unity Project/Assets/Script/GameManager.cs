@@ -45,8 +45,14 @@ public class GameManager : MonoBehaviour
         player2 = new playerstat();
         player1.hp = starthealth;
         player2.hp = starthealth;
-        prefabs.p1hp.maxValue = starthealth;
-        prefabs.p2hp.maxValue = starthealth;
+        
+        prefabs.p1hp.HpBar.maxValue = starthealth;
+        prefabs.p1hp.HpBarLinger.maxValue = starthealth;
+        prefabs.p1hp.SetHpBar(starthealth);
+        prefabs.p2hp.HpBar.maxValue = starthealth;
+        prefabs.p2hp.HpBarLinger.maxValue = starthealth;
+        prefabs.p2hp.SetHpBar(starthealth);
+
         player1.sp = 0;
         player2.sp = 0;
         inisialisasitabeldamage();
@@ -628,9 +634,16 @@ public class GameManager : MonoBehaviour
         player1.sp += ubahsp1;
         player2.sp += ubahsp2;
         prefabs.sp.value += player1.sp;
+
+        float tempHp1 = player1.hp;
         player1.hp -= ubahhpp1 ;
+        updatehealthbar(prefabs.p1hp, tempHp1, player1.hp);
+
+        float tempHp2 = player2.hp;
         player2.hp -= ubahhpp2 ;
-        updatehealthbar();
+        updatehealthbar(prefabs.p2hp, tempHp2, player2.hp);
+
+        //updatehealthbar();
     }
     public void useskill(int pemainke)
     {
@@ -654,9 +667,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    void updatehealthbar() {
-        prefabs.p1hp.value = player1.hp;
-        prefabs.p2hp.value = player2.hp;
+    void updatehealthbar(HPBarController hpBar, float hpFrom, float hpTo) {
+        hpBar.AnimateHP(hpFrom, hpTo);
     }
 
     

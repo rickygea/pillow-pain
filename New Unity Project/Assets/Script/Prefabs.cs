@@ -11,8 +11,8 @@ public class Prefabs : MonoBehaviour
     public GameObject ha1;
     public GameObject ha2, block1, block2, low1, low2;
     [Header("Health Bar")]
-    public Slider p1hp;
-    public Slider p2hp;
+    public HPBarController p1hp;
+    public HPBarController p2hp;
     [Header("Other UI")]
     public GameObject teks;
     public Slider timer, sp;
