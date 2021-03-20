@@ -65,5 +65,10 @@ public class MenuController : MonoBehaviour
         _tutorialPanel.SetActive(true);
         _lobbyPanel.gameObject.SetActive(false);
     }
+
+    public void ExitGameButton()
+    {
+        Application.Quit();
+    }
     #endregion
 }
