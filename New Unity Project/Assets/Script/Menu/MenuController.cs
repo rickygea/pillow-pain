@@ -15,6 +15,9 @@ public class MenuController : MonoBehaviour
     [Space]
     [SerializeField] private CanvasGroup _lobbyPanel = null;
 
+    [Space]
+    [SerializeField] private GameObject _tutorialPanel = null;
+
     private void Start()
     {
         if(!_isStoryPanelShowed)
@@ -59,7 +62,8 @@ public class MenuController : MonoBehaviour
 
     public void TutorialButton()
     {
-
+        _tutorialPanel.SetActive(true);
+        _lobbyPanel.gameObject.SetActive(false);
     }
     #endregion
 }
