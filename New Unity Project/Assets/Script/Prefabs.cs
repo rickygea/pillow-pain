@@ -21,5 +21,5 @@ public class Prefabs : MonoBehaviour
     public Button tblha, tbllow, tblblock;
     public GameObject notblha, notbllow, notblbloack, doubledamage, tblskill;
     public GameObject[] wincount1, wincount2;
-
+    public CanvasGroup winPanel, losePanel = null;
 }

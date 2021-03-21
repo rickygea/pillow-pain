@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
         anip2 = prefabs.player2.GetComponent<Animator>();
         anicanvas = prefabs.Canvas.GetComponent<Animator>();
         reset();
+
+        AudioManager.Instance.PlayAudio("Battle");
     }
 
     void inisialisasitabeldamage() 
@@ -524,11 +526,16 @@ public class GameManager : MonoBehaviour
         coroutine = StartCoroutine(fightprocess());
 
     }
+
     IEnumerator fightprocess() { 
         prefabs.teks.GetComponent<Text>().text = "fight";
         prefabs.attackButtons.gameObject.SetActive(false);
+        prefabs.doubledamage.gameObject.SetActive(false);
         infight = true;
-        int random = Random.Range(0, 4);
+
+        int randomBotIdleChance = Random.Range(0, 5);
+
+        int random = Random.Range(0, (randomBotIdleChance >= 4 ? 4 : 3));
         Debug.Log(random);
             switch (random)
             {
@@ -649,10 +656,27 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(afterfighttime);
 
-        if (nilaistatis.p1win == 2 || nilaistatis.p2win == 2)
+        if (nilaistatis.p1win >= 2 || nilaistatis.p2win >= 2)
         {
             restart = false;
-            //TODO - win Panel - lose panel
+            bool isPlayerWin = nilaistatis.p1win >= 2;
+
+            if (isPlayerWin)
+            {
+                AudioManager.Instance.PlayAudio("Win");
+                LeanTween.alphaCanvas(prefabs.winPanel, 1, 1f);
+
+                prefabs.winPanel.gameObject.SetActive(true);
+            }
+            else
+            {
+                AudioManager.Instance.PlayAudio("Lose");
+                LeanTween.alphaCanvas(prefabs.losePanel, 1, 1f);
+
+                prefabs.losePanel.gameObject.SetActive(true);
+            }
+
+            yield return new WaitForSeconds(isPlayerWin ? 4f : 6f);
             SceneManager.LoadScene(0);
         }
 

@@ -20,6 +20,7 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayAudio("Main Menu");
         if(!_isStoryPanelShowed)
         {
             SetCanvasGroupAlphaAndBool(_storyPanel, 0, true);
@@ -57,6 +58,8 @@ public class MenuController : MonoBehaviour
     #region Buttons
     public void GotoGameButton()
     {
+        nilaistatis.p1win = 0;
+        nilaistatis.p2win = 0;
         SceneManager.LoadScene(1);
     }
 
@@ -64,6 +67,14 @@ public class MenuController : MonoBehaviour
     {
         _tutorialPanel.SetActive(true);
         _lobbyPanel.gameObject.SetActive(false);
+        AudioManager.Instance.PlayAudio("Tutorial");
+
+    }
+
+    public void PlayAudio(string AudioName)
+    {
+        AudioManager.Instance.PlayAudio(AudioName);
+
     }
 
     public void ExitGameButton()
