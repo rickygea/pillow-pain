@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakescript: {fileID: 519420033}
+  code: 1
 --- !u!1 &69487062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7526,6 +7527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakescript: {fileID: 519420033}
+  code: 2
 --- !u!1 &1742286411
 GameObject:
   m_ObjectHideFlags: 0
