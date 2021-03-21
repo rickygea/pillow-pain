@@ -649,9 +649,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(afterfighttime);
 
-        if (nilaistatis.p1win == 1 || nilaistatis.p2win == 1)
+        if (nilaistatis.p1win == 2 || nilaistatis.p2win == 2)
         {
             restart = false;
+            //TODO - win Panel - lose panel
             SceneManager.LoadScene(0);
         }
 
