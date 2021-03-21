@@ -972,7 +972,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 256562119}
-  - component: {fileID: 256562120}
   - component: {fileID: 256562121}
   m_Layer: 5
   m_Name: skill p1
@@ -1002,25 +1001,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &256562120
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256562118}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 47695ee1e5177c64b8e133a9569f3751, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &256562121
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2255,6 +2235,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2423,6 +2404,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ab466c5aedccf4cb1d19341795fad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kamera: {fileID: 519420032}
+  shake: 0.7
+  posawal: {x: 0, y: 0, z: 0}
+  durasi: 0.5
 --- !u!1 &581854655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,12 +5296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20edd56125eb944a82718365592375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakescript: {fileID: 519420033}
   prefabs: {fileID: 1286324735}
   timer: 10
   beforefighttime: 5
   afterfighttime: 1
   afterprepare: 3
-  waktuskill: 1.2
+  waktuskill: 1.6
   waitforanimationdamage: 1
   highdmg: 10
   lowdmg: 5
@@ -6934,7 +6932,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613282247}
-  - component: {fileID: 1613282248}
   - component: {fileID: 1613282249}
   m_Layer: 5
   m_Name: skill p2
@@ -6964,25 +6961,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1613282248
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613282246}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 47695ee1e5177c64b8e133a9569f3751, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &1613282249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8711,7 +8689,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121770807}
-  - component: {fileID: 2121770808}
   - component: {fileID: 2121770809}
   m_Layer: 5
   m_Name: skill p1 (1)
@@ -8743,25 +8720,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &2121770808
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121770806}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 47695ee1e5177c64b8e133a9569f3751, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &2121770809
 AudioSource:
   m_ObjectHideFlags: 0

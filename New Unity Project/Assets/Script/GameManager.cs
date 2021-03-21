@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
        public int move;
         public bool ultimate;
     }
-  
+    public CameraShake shakescript;
     public Prefabs prefabs;
     [Header("TimeSetting")]
     public float timer;
@@ -454,7 +454,13 @@ public class GameManager : MonoBehaviour
         switch (tekan)
         {
             case "a":
-                player1.sp = 400 ;
+                player1.sp = maxsp ;
+                break;
+            case "s":
+                player2.sp = maxsp;
+                break;
+            case "d":
+                player1.sp = 400;
                 break;
             case "q":
                 player1.hp = 1;
@@ -529,6 +535,7 @@ public class GameManager : MonoBehaviour
             prefabs.tblskill.SetActive(true);
         }
         prefabs.teks.GetComponent<Text>().text = "reset";
+        shakescript.enabled = false;
     }
 
     public void fight()
@@ -545,7 +552,11 @@ public class GameManager : MonoBehaviour
     IEnumerator fightprocess() { 
         prefabs.teks.GetComponent<Text>().text = "fight";
         prefabs.attackButtons.gameObject.SetActive(false);
-        prefabs.doubledamage.gameObject.SetActive(false);
+        prefabs.doubledamage.gameObject.SetActive(false); 
+        if (player2.sp >= maxsp)
+        {
+            useskill(2);
+        }
         infight = true;
 
         int randomBotIdleChance = Random.Range(0, 5);
@@ -572,10 +583,7 @@ public class GameManager : MonoBehaviour
                 player2.move = 3;
                     break;
             }
-        if (player2.sp >= maxsp)
-        {
-            useskill(2);
-        }
+        
         int kasus = 0;
         if (!player1.ultimate && !player2.ultimate)
         {
@@ -586,6 +594,7 @@ public class GameManager : MonoBehaviour
         {
             kasus = 1;
             anicanvas.SetTrigger("p12");
+            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
@@ -594,7 +603,9 @@ public class GameManager : MonoBehaviour
             kasus = 3;
             anicanvas.SetTrigger("p2");
             prefabs.kamera.transform.position = new Vector3(2.35f, 0.32f, -10f);
+            shakescript.posawal = new Vector3(2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
+            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
@@ -603,11 +614,14 @@ public class GameManager : MonoBehaviour
             kasus = 2;
             anicanvas.SetTrigger("p1");
             prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
+            shakescript.posawal = new Vector3(-2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
+            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
         prefabs.kamera.transform.position = new Vector3(0f, 0f, -10f);
+        shakescript.posawal = new Vector3(0f, 0f, -10f);
         prefabs.kamera.GetComponent<Camera>().orthographicSize = 5f;
         switch (player1.move)
         {
@@ -742,6 +756,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case 2:
                     player2.ultimate = true;
+                    Debug.Log("a");
                     break;
                 default:
                     break;
