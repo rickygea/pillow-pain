@@ -691,7 +691,7 @@ public class GameManager : MonoBehaviour
         int ubahsp2 = arrangkakalkulasi[kasus, movep1, movep2, 3];
         
         player1.sp += ubahsp1;
-        Debug.Log("kasus " + kasus + " move1 " + movep1 + " move2 " + movep2 +" kurangi " + ubahsp1);
+       // Debug.Log("kasus " + kasus + " move1 " + movep1 + " move2 " + movep2 +" kurangi " + ubahsp1);
         player2.sp += ubahsp2;
         prefabs.sp.value = player1.sp;
 
