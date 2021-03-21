@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[0, 3, 1, 0] = 40;
         arrangkakalkulasi[0, 3, 1, 1] = 150;
         arrangkakalkulasi[0, 3, 1, 2] = 0;
-        arrangkakalkulasi[0, 3, 1, 3] = 50;
+        arrangkakalkulasi[0, 3, 1, 3] = 25;
 
         arrangkakalkulasi[0, 3, 2, 0] = 0;
         arrangkakalkulasi[0, 3, 2, 1] = 0;
@@ -232,9 +232,9 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[1, 2, 1, 3] = -400;
 
         arrangkakalkulasi[1, 2, 2, 0] = 0;
-        arrangkakalkulasi[1, 2, 2, 1] = -0;
+        arrangkakalkulasi[1, 2, 2, 1] = -100;
         arrangkakalkulasi[1, 2, 2, 2] = 0;
-        arrangkakalkulasi[1, 2, 2, 3] = -0;
+        arrangkakalkulasi[1, 2, 2, 3] = -100;
 
         arrangkakalkulasi[1, 2, 3, 0] = 0;
         arrangkakalkulasi[1, 2, 3, 1] = -0;
@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[1, 3, 1, 0] = 60;
         arrangkakalkulasi[1, 3, 1, 1] = -100;
         arrangkakalkulasi[1, 3, 1, 2] = 0;
-        arrangkakalkulasi[1, 3, 1, 3] = -200;
+        arrangkakalkulasi[1, 3, 1, 3] = -100;
 
         arrangkakalkulasi[1, 3, 2, 0] = 0;
         arrangkakalkulasi[1, 3, 2, 1] = -100;
@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[2, 1, 1, 2] = 0;
         arrangkakalkulasi[2, 1, 1, 3] = 25;
 
-        arrangkakalkulasi[2, 1, 2, 0] = 40;
+        arrangkakalkulasi[2, 1, 2, 0] = 20;
         arrangkakalkulasi[2, 1, 2, 1] = -200;
         arrangkakalkulasi[2, 1, 2, 2] = 0;
         arrangkakalkulasi[2, 1, 2, 3] = 50;
@@ -317,7 +317,7 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[2, 2, 1, 3] = 100;
 
         arrangkakalkulasi[2, 2, 2, 0] = 0;
-        arrangkakalkulasi[2, 2, 2, 1] = -0;
+        arrangkakalkulasi[2, 2, 2, 1] = -100;
         arrangkakalkulasi[2, 2, 2, 2] = 0;
         arrangkakalkulasi[2, 2, 2, 3] = 25;
 
@@ -399,12 +399,12 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[3, 2, 1, 0] = 0;
         arrangkakalkulasi[3, 2, 1, 1] = 50;
         arrangkakalkulasi[3, 2, 1, 2] = 20;
-        arrangkakalkulasi[3, 2, 1, 3] = -400;
+        arrangkakalkulasi[3, 2, 1, 3] = -200;
 
         arrangkakalkulasi[3, 2, 2, 0] = 0;
         arrangkakalkulasi[3, 2, 2, 1] = 25;
         arrangkakalkulasi[3, 2, 2, 2] = 0;
-        arrangkakalkulasi[3, 2, 2, 3] = -0;
+        arrangkakalkulasi[3, 2, 2, 3] = -100;
         
         arrangkakalkulasi[3, 2, 3, 0] = 0;
         arrangkakalkulasi[3, 2, 3, 1] = 0;
@@ -420,7 +420,7 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[3, 3, 1, 0] = 40;
         arrangkakalkulasi[3, 3, 1, 1] = 150;
         arrangkakalkulasi[3, 3, 1, 2] = 0;
-        arrangkakalkulasi[3, 3, 1, 3] = -200;
+        arrangkakalkulasi[3, 3, 1, 3] = -100;
 
         arrangkakalkulasi[3, 3, 2, 0] = 0;
         arrangkakalkulasi[3, 3, 2, 1] = 0;
@@ -604,7 +604,14 @@ public class GameManager : MonoBehaviour
             anicanvas.SetTrigger("p12");
             yield return new WaitForSeconds(waktuskill);
         }
-
+        if (player1.ultimate && !player2.ultimate)
+        {
+            kasus = 2;
+            anicanvas.SetTrigger("p1");
+            prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
+            prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
+            yield return new WaitForSeconds(waktuskill);
+        }
         if (!player1.ultimate && player2.ultimate)
         {
             kasus = 3;
@@ -614,14 +621,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(waktuskill);
         }
 
-        if (player1.ultimate && !player2.ultimate)
-        {
-            kasus = 2;
-            anicanvas.SetTrigger("p1");
-            prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
-            prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
-            yield return new WaitForSeconds(waktuskill);
-        }
+        
 
         prefabs.kamera.transform.position = new Vector3(0f, 0f, -10f);
         prefabs.kamera.GetComponent<Camera>().orthographicSize = 5f;
@@ -731,10 +731,12 @@ public class GameManager : MonoBehaviour
         int ubahsp2 = arrangkakalkulasi[kasus, movep1, movep2, 3];
         
         player1.sp += ubahsp1;
-       // Debug.Log("kasus " + kasus + " move1 " + movep1 + " move2 " + movep2 +" kurangi " + ubahsp1);
+        
+        Debug.Log("kasus " + kasus + " move1 " + movep1 + " move2 " + movep2 +" tambah " + ubahsp1 + " jadi " + player1.sp);
         player2.sp += ubahsp2;
         prefabs.sp.value = player1.sp;
-
+        player1.sp = Mathf.Clamp(player1.sp, 0, maxsp);
+        player2.sp = Mathf.Clamp(player2.sp, 0, maxsp);
         float tempHp1 = player1.hp;
         player1.hp -= ubahhpp1 ;
         updatehealthbar(prefabs.p1hp, tempHp1, player1.hp);
@@ -754,7 +756,6 @@ public class GameManager : MonoBehaviour
                     prefabs.doubledamage.SetActive(true);
                     prefabs.tblskill.SetActive(false);
                     player1.ultimate = true;
-                    prefabs.sp.value = player1.sp;
                     break;
                 case 2:
                     player2.ultimate = true;
