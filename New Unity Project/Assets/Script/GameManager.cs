@@ -59,7 +59,25 @@ public class GameManager : MonoBehaviour
         anicanvas = prefabs.Canvas.GetComponent<Animator>();
         reset();
 
+        StartCoroutine(StartBattle());
+
         AudioManager.Instance.PlayAudio("Battle");
+    }
+
+    private IEnumerator StartBattle()
+    {
+        infight = true;
+        prefabs.beginningText.text = "Ready";
+
+        yield return new WaitForSeconds(1f);
+        prefabs.beginningText.text = "Fight!";
+
+        LeanTween.alphaCanvas(prefabs.beginningCG, 0, 1f).setOnComplete(() => {
+            prefabs.beginningCG.gameObject.SetActive(false);
+        }).setEaseInQuart();
+
+        yield return new WaitForSeconds(1f);
+        infight = false;
     }
 
     void inisialisasitabeldamage() 
@@ -523,6 +541,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    int previousBotMove = -1;
     IEnumerator fightprocess() { 
         prefabs.teks.GetComponent<Text>().text = "fight";
         prefabs.attackButtons.gameObject.SetActive(false);
@@ -532,6 +551,11 @@ public class GameManager : MonoBehaviour
         int randomBotIdleChance = Random.Range(0, 5);
 
         int random = Random.Range(0, (randomBotIdleChance >= 4 ? 4 : 3));
+        while(previousBotMove == random)
+        {
+            random = Random.Range(0, (randomBotIdleChance >= 4 ? 4 : 3));
+        }
+        previousBotMove = random;
        // Debug.Log(random);
             switch (random)
             {

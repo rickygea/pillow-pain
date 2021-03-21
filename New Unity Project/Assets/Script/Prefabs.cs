@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Prefabs : MonoBehaviour
 {
     [Header("Player")]
@@ -15,6 +16,8 @@ public class Prefabs : MonoBehaviour
     public GameObject kamera;
     public GameObject Canvas;
     public GameObject teks;
+    public CanvasGroup beginningCG = null;
+    public TextMeshProUGUI beginningText = null;
     public Image Timerfill;
     public Slider  sp;
     public GameObject attackButtons = null;
