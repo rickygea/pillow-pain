@@ -7,6 +7,7 @@ public class ultimateefects : MonoBehaviour
     GameManager gamemanager;
     public CameraShake shakescript;
     public int code;
+    public ParticleSystem hiteffect, asap;
     private void Start()
     {
         gamemanager = GameManager.sgtgamemanager;
@@ -14,13 +15,47 @@ public class ultimateefects : MonoBehaviour
 
     void shake() 
     {
-        if (gamemanager.player1.ultimate && code == 1)
+        switch (code)
         {
-            shakescript.enabled = true;
+            case 1:
+                if (gamemanager.player1.ultimate)
+                {
+                    shakescript.enabled = true;
+                    if (gamemanager.maupakaiparticle)
+                    {
+                        hiteffect.Play();
+                    }
+                }
+                else
+                {
+                    if (gamemanager.maupakaiparticle)
+                    {
+                        asap.Play();
+                    }
+                }
+                break;
+            case 2:
+                if (gamemanager.player2.ultimate)
+                {
+
+                    shakescript.enabled = true;
+                    if (gamemanager.maupakaiparticle)
+                    {
+                        hiteffect.Play();
+                    }
+                }
+                else 
+                {
+                    if (gamemanager.maupakaiparticle)
+                    {
+                        asap.Play();
+                    }
+                }
+                break;
+            default:
+                break;
         }
-        if(gamemanager.player2.ultimate && code ==2)
-        {
-            shakescript.enabled = true;
-        }
+        
+      
     }
 }
