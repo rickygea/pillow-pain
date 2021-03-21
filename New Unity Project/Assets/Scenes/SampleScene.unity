@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 42653911}
   - component: {fileID: 42653914}
   - component: {fileID: 42653915}
+  - component: {fileID: 42653916}
   m_Layer: 0
   m_Name: p1
   m_TagString: Untagged
@@ -553,6 +554,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &42653916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42653910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77e0ff3b71e5784c964cf06dde8ef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakescript: {fileID: 519420033}
 --- !u!1 &69487062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,9 +2431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kamera: {fileID: 519420032}
-  shake: 0.7
-  posawal: {x: 0, y: 0, z: 0}
-  durasi: 0.5
+  shake: 0.1
+  durasi: 0.3
 --- !u!1 &581854655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5308,6 +5321,16 @@ MonoBehaviour:
   lowdmg: 5
   starthealth: 100
   maxsp: 400
+  player1:
+    hp: 0
+    sp: 0
+    move: 0
+    ultimate: 0
+  player2:
+    hp: 0
+    sp: 0
+    move: 0
+    ultimate: 0
 --- !u!114 &1286324737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7285,6 +7308,7 @@ GameObject:
   - component: {fileID: 1723553334}
   - component: {fileID: 1723553338}
   - component: {fileID: 1723553337}
+  - component: {fileID: 1723553339}
   m_Layer: 0
   m_Name: p2
   m_TagString: Untagged
@@ -7489,6 +7513,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d4e53ff7d8819a4f8e1e19bb133b929, type: 3}
   - {fileID: 8300000, guid: 311936dd1877bf24488ac45ad4406e02, type: 3}
   - {fileID: 8300000, guid: 9107de73caff03844912c68089c9bd00, type: 3}
+--- !u!114 &1723553339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723553333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77e0ff3b71e5784c964cf06dde8ef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakescript: {fileID: 519420033}
 --- !u!1 &1742286411
 GameObject:
   m_ObjectHideFlags: 0

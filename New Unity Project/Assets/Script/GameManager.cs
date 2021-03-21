@@ -6,8 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager sgtgamemanager;
+    private void Awake()
+    {
+        if (sgtgamemanager == null)
+        {
+            sgtgamemanager = this;
+        }
+    }
     [System.Serializable]
-    private class playerstat 
+    public class playerstat 
     {
         public int hp;
         public int sp;
@@ -25,7 +33,7 @@ public class GameManager : MonoBehaviour
     [Header("PlayerSetting")]
     public int starthealth;
     public int maxsp;
-    private playerstat player1, player2;
+    public playerstat player1, player2;
 
     private bool infight;
     private int[,,,] arrangkakalkulasi;
@@ -594,7 +602,6 @@ public class GameManager : MonoBehaviour
         {
             kasus = 1;
             anicanvas.SetTrigger("p12");
-            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
@@ -603,9 +610,7 @@ public class GameManager : MonoBehaviour
             kasus = 3;
             anicanvas.SetTrigger("p2");
             prefabs.kamera.transform.position = new Vector3(2.35f, 0.32f, -10f);
-            shakescript.posawal = new Vector3(2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
-            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
@@ -614,14 +619,11 @@ public class GameManager : MonoBehaviour
             kasus = 2;
             anicanvas.SetTrigger("p1");
             prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
-            shakescript.posawal = new Vector3(-2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
-            shakescript.enabled = true;
             yield return new WaitForSeconds(waktuskill);
         }
 
         prefabs.kamera.transform.position = new Vector3(0f, 0f, -10f);
-        shakescript.posawal = new Vector3(0f, 0f, -10f);
         prefabs.kamera.GetComponent<Camera>().orthographicSize = 5f;
         switch (player1.move)
         {
@@ -756,7 +758,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case 2:
                     player2.ultimate = true;
-                    Debug.Log("a");
+                   // Debug.Log("a");
                     break;
                 default:
                     break;
