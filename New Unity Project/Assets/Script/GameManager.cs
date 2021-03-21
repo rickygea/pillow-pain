@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Prefabs prefabs;
     [Header("TimeSetting")]
     public float timer;
-    public float beforefighttime, afterfighttime, afterprepare ;
+    public float beforefighttime, afterfighttime, afterprepare, waktuskill, waitforanimationdamage;
     [Header("Damages")]
     public int highdmg;
     public int lowdmg;
@@ -29,23 +29,23 @@ public class GameManager : MonoBehaviour
     public int starthealth;
     public int maxsp;
     private playerstat player1, player2;
-    //[SerializeField]
-    //string player1move, player2move;
-    //public int player1hp, player2hp, player1sp, player2sp;
+
     private bool infight;
     private int[,,,] arrangkakalkulasi;
     GameObject lastpress, nowpress;
     Coroutine coroutine;
+    Animator anip1, anip2, anicanvas;
+    private float time;
+    string tekan;
     void Start()
     {
-        prefabs.winp1.value = nilaistatis.p1win;
-        prefabs.winp2.value = nilaistatis.p2win;
-        prefabs.timer.maxValue = timer;
+        refreshcount();
+        prefabs.sp.maxValue = maxsp;
         player1 = new playerstat();
         player2 = new playerstat();
         player1.hp = starthealth;
         player2.hp = starthealth;
-        
+        time = timer;
         prefabs.p1hp.HpBar.maxValue = starthealth;
         prefabs.p1hp.HpBarLinger.maxValue = starthealth;
         prefabs.p1hp.SetHpBar(starthealth);
@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
         player2.sp = 0;
         inisialisasitabeldamage();
         prefabs.sp.maxValue = maxsp;
+        anip1 = prefabs.player1.GetComponent<Animator>();
+        anip2 = prefabs.player2.GetComponent<Animator>();
+        anicanvas = prefabs.Canvas.GetComponent<Animator>();
         reset();
     }
 
@@ -405,13 +408,23 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[3, 3, 3, 3] = 0;
         #endregion
     }
-
+    void refreshcount() {
+        for (int a = 0; a < nilaistatis.p1win; a++)
+        {
+            prefabs.wincount1[a].SetActive(true);
+        }
+        for (int a = 0; a < nilaistatis.p2win; a++)
+        {
+            prefabs.wincount2[a].SetActive(true);
+        }
+    }
     private void FixedUpdate()
     {
         if (!infight)
         {
-            prefabs.timer.value -= Time.deltaTime;
-            if (prefabs.timer.value <= 0)
+            time -= Time.deltaTime;
+            prefabs.Timerfill.transform.localScale = new Vector3(time / timer, time / timer, 1f);
+            if (time <= 0)
             {
                 fight();
             }
@@ -420,34 +433,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        //tekan = Input.inputString;
-        //if (tekan != null)
-        //{
-        //    Debug.Log(tekan);
-        //}
-        //    switch (tekan)
-        //{
-        //    case "a":
-        //        ubahposisiplayer(1, "high");
-        //        break;
-        //    case "s":
-        //        ubahposisiplayer(1, "block");
-        //        break;
-        //    case "d":
-        //        ubahposisiplayer(1, "low");
-        //        break;
-        //    case "j":
-        //        ubahposisiplayer(2, "high");
-        //        break;
-        //    case "k":
-        //        ubahposisiplayer(2, "block");
-        //        break;
-        //    case "l":
-        //        ubahposisiplayer(2, "low");
-        //        break;
-        //    default:
-        //        break;
-        //}
+        tekan = Input.inputString;
+        switch (tekan)
+        {
+            case "a":
+                player1.sp = 400 ;
+                break;
+            case "q":
+                player1.hp = 1;
+                break;
+
+            case "w":
+                player2.hp = 1;
+                break;
+            default:
+                break;
+        }
 
     }
 
@@ -461,25 +462,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ubahtombol(GameObject tombol, bool aktifkan) 
+    void ubahtombol(GameObject tombol, bool nilai) 
     {
         if (tombol != null)
         {
             switch (tombol.transform.name)
             {
-                case "high":
-                    prefabs.notblha.SetActive(aktifkan);
+                case "1":
+                    prefabs.notblha.SetActive(nilai);
                     break;
-                case "block":
-                    prefabs.notblbloack.SetActive(aktifkan);
+                case "2":
+                    prefabs.notblbloack.SetActive(nilai);
                     break;
-                case "low":
-                    prefabs.notbllow.SetActive(aktifkan);
+                case "0":
+                    prefabs.notbllow.SetActive(nilai);
                     break;
                 default:
                     break;
             }
-            tombol.GetComponent<Button>().enabled = !aktifkan;
+            if (nilai)
+            {
+                tombol.GetComponent<Image>().color = new Color(1, 1, 1,1);
+            }
+            else
+            {
+
+                tombol.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+            }
+            tombol.GetComponent<Button>().enabled = nilai;
         }
     }
     void reset()
@@ -488,20 +498,16 @@ public class GameManager : MonoBehaviour
         player2.ultimate = false;
         player1.move = 3;
         prefabs.doubledamage.SetActive(false);
-        ubahtombol(lastpress, false);
-        ubahtombol(nowpress, true);
+        ubahtombol(lastpress, true);
+        ubahtombol(nowpress, false);
         lastpress = nowpress;
         nowpress = null;
-        prefabs.ha1.SetActive(false);
-        prefabs.block1.SetActive(false);
-        prefabs.low1.SetActive(false);
-        prefabs.ha2.SetActive(false);
-        prefabs.block2.SetActive(false);
-        prefabs.low2.SetActive(false);
         infight = false;
-        prefabs.timer.value = timer;
+        time = timer;
         prefabs.tblskill.SetActive(false);
-        if (player1.sp == maxsp)
+
+        Debug.Log(player1.sp);
+        if (player1.sp >= maxsp)
         {
             prefabs.tblskill.SetActive(true);
         }
@@ -510,7 +516,14 @@ public class GameManager : MonoBehaviour
 
     public void fight()
     {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(fightprocess());
 
+    }
+    IEnumerator fightprocess() { 
         prefabs.teks.GetComponent<Text>().text = "fight";
         infight = true;
         int random = Random.Range(0, 4);
@@ -543,33 +556,82 @@ public class GameManager : MonoBehaviour
         if (player1.ultimate && player2.ultimate)
         {
             kasus = 1;
+            anicanvas.SetTrigger("p12");
+            yield return new WaitForSeconds(waktuskill);
         }
 
         if (!player1.ultimate && player2.ultimate)
         {
             kasus = 2;
+            anicanvas.SetTrigger("p2");
+            prefabs.kamera.transform.position = new Vector3(2.35f, 0.32f, -10f);
+            prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
+            yield return new WaitForSeconds(waktuskill);
         }
 
         if (player1.ultimate && !player2.ultimate)
         {
             kasus = 3;
+            anicanvas.SetTrigger("p1");
+            prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
+            prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
+            yield return new WaitForSeconds(waktuskill);
         }
 
-        kalkulasidamage(kasus, player1.move, player2.move);
-        if (coroutine != null)
+        prefabs.kamera.transform.position = new Vector3(0f, 0f, -10f);
+        prefabs.kamera.GetComponent<Camera>().orthographicSize = 5f;
+        switch (player1.move)
         {
-            StopCoroutine(coroutine);
+            case 0:
+                anip1.SetTrigger("low");
+                break;
+            case 1:
+                anip1.SetTrigger("high");
+                break;
+            case 2:
+                if (player2.move == 1)
+                {
+                    anip1.SetTrigger("counter");
+                }
+                else
+                {
+                    anip1.SetTrigger("defend");
+                }
+                break;
+            case 3:
+                break;
         }
-        coroutine = StartCoroutine(prepare());
-    }
+        switch (player2.move)
+        {
+            case 0:
+                anip2.SetTrigger("low");
+                break;
+            case 1:
+                anip2.SetTrigger("high");
+                break;
+            case 2:
+                if (player1.move == 1)
+                {
+                    anip2.SetTrigger("counter");
+                }
+                else
+                {
+                    anip2.SetTrigger("defend");
+                }
+                break;
+            case 3:
+                break;
+        }
 
-    IEnumerator prepare()
-    {
+        yield return new WaitForSeconds(waitforanimationdamage);
+        kalkulasidamage(kasus, player1.move, player2.move);
+    
         prefabs.teks.GetComponent<Text>().text = "prepare";
         bool restart = false;
         if (player1.hp <= 0)
         {
             nilaistatis.p2win++;
+            anip1.SetTrigger("fall");
             restart = true;
         }
         else
@@ -577,12 +639,12 @@ public class GameManager : MonoBehaviour
             if (player2.hp <= 0)
             {
                 nilaistatis.p1win++;
+                anip2.SetTrigger("fall");
                 restart = true;
             }
         }
-        prefabs.winp1.value = nilaistatis.p1win;
-        prefabs.winp2.value = nilaistatis.p2win;
-       
+        refreshcount();
+
         yield return new WaitForSeconds(afterfighttime);
 
         if (nilaistatis.p1win == 3 || nilaistatis.p2win == 3)
@@ -603,37 +665,10 @@ public class GameManager : MonoBehaviour
         int ubahsp1 = arrangkakalkulasi[kasus, movep1, movep2, 1];
         int ubahhpp2 = arrangkakalkulasi[kasus, movep1, movep2, 2];
         int ubahsp2 = arrangkakalkulasi[kasus, movep1, movep2, 3];
-        switch (movep1)
-        {
-            case 0:
-                prefabs.low1.SetActive(true);
-                break;
-            case 1:
-                prefabs.ha1.SetActive(true);
-                break;
-            case 2:
-                prefabs.block1.SetActive(true);
-                break;
-            case 3:
-                break;
-        }
-        switch (movep2)
-        {
-            case 0:
-                prefabs.low2.SetActive(true);
-                break;
-            case 1:
-                prefabs.ha2.SetActive(true);
-                break;
-            case 2:
-                prefabs.block2.SetActive(true);
-                break;
-            case 3:
-                break;
-        }
+        
         player1.sp += ubahsp1;
         player2.sp += ubahsp2;
-        prefabs.sp.value += player1.sp;
+        prefabs.sp.value = player1.sp;
 
         float tempHp1 = player1.hp;
         player1.hp -= ubahhpp1 ;
@@ -671,5 +706,28 @@ public class GameManager : MonoBehaviour
         hpBar.AnimateHP(hpFrom, hpTo);
     }
 
-    
+    public void pause(bool nilai) {
+
+        prefabs.uipause.SetActive(nilai);
+        if (nilai)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+    public void mainmenu()
+    {
+        Time.timeScale = 1f;
+        nilaistatis.p1win = 0;
+        nilaistatis.p2win = 0;
+        SceneManager.LoadScene(0);
+    }
+    public void retry()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
 }

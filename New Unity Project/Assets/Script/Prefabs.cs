@@ -7,17 +7,18 @@ public class Prefabs : MonoBehaviour
     [Header("Player")]
     public GameObject player1;
     public GameObject player2;
-    [Header("Jenis move")]
-    public GameObject ha1;
-    public GameObject ha2, block1, block2, low1, low2;
     [Header("Health Bar")]
     public HPBarController p1hp;
     public HPBarController p2hp;
-    [Header("Other UI")]
+    [Header("Other")]
+    public GameObject uipause;
+    public GameObject kamera;
+    public GameObject Canvas;
     public GameObject teks;
-    public Slider timer, sp;
+    public Image Timerfill;
+    public Slider  sp;
     public Button tblha, tbllow, tblblock;
     public GameObject notblha, notbllow, notblbloack, doubledamage, tblskill;
-    public Slider winp1, winp2;
-       
+    public GameObject[] wincount1, wincount2;
+
 }
