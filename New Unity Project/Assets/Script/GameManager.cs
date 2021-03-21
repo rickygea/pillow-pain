@@ -505,6 +505,7 @@ public class GameManager : MonoBehaviour
         infight = false;
         time = timer;
         prefabs.tblskill.SetActive(false);
+        prefabs.attackButtons.gameObject.SetActive(true);
 
         Debug.Log(player1.sp);
         if (player1.sp >= maxsp)
@@ -525,6 +526,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator fightprocess() { 
         prefabs.teks.GetComponent<Text>().text = "fight";
+        prefabs.attackButtons.gameObject.SetActive(false);
         infight = true;
         int random = Random.Range(0, 4);
         Debug.Log(random);
@@ -647,12 +649,13 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(afterfighttime);
 
-        if (nilaistatis.p1win == 3 || nilaistatis.p2win == 3)
+        if (nilaistatis.p1win == 1 || nilaistatis.p2win == 1)
         {
+            restart = false;
             SceneManager.LoadScene(0);
         }
 
-        if (restart)
+        if (restart )
         {
 
             SceneManager.LoadScene(1);

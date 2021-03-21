@@ -17,6 +17,7 @@ public class Prefabs : MonoBehaviour
     public GameObject teks;
     public Image Timerfill;
     public Slider  sp;
+    public GameObject attackButtons = null;
     public Button tblha, tbllow, tblblock;
     public GameObject notblha, notbllow, notblbloack, doubledamage, tblskill;
     public GameObject[] wincount1, wincount2;
