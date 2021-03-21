@@ -14,10 +14,7 @@ public class GameManager : MonoBehaviour
        public int move;
         public bool ultimate;
     }
-    //private class angkakalkulasi
-    //{
-    //    public int p1getdamage, p2getdamage, p1getsp, p2getsp;
-    //}
+  
     public Prefabs prefabs;
     [Header("TimeSetting")]
     public float timer;
@@ -86,9 +83,9 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[0, 0, 2, 3] = 100;
 
         arrangkakalkulasi[0, 0, 3, 0] = 0;
-        arrangkakalkulasi[0, 0, 3, 1] = 0;
-        arrangkakalkulasi[0, 0, 3, 2] = 0;
-        arrangkakalkulasi[0, 0, 3, 3] = 0;
+        arrangkakalkulasi[0, 0, 3, 1] = 50;
+        arrangkakalkulasi[0, 0, 3, 2] = 20;
+        arrangkakalkulasi[0, 0, 3, 3] = 100;
 
 
         arrangkakalkulasi[0, 1, 0, 0] = 10;
@@ -107,9 +104,9 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[0, 1, 2, 3] = 50;
 
         arrangkakalkulasi[0, 1, 3, 0] = 0;
-        arrangkakalkulasi[0, 1, 3, 1] = 0;
-        arrangkakalkulasi[0, 1, 3, 2] = 0;
-        arrangkakalkulasi[0, 1, 3, 3] = 0;
+        arrangkakalkulasi[0, 1, 3, 1] = 25;
+        arrangkakalkulasi[0, 1, 3, 2] = 40;
+        arrangkakalkulasi[0, 1, 3, 3] = 150;
 
 
         arrangkakalkulasi[0, 2, 0, 0] = 5;
@@ -133,15 +130,15 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[0, 2, 3, 3] = 0;
 
 
-        arrangkakalkulasi[0, 3, 0, 0] = 0;
-        arrangkakalkulasi[0, 3, 0, 1] = 0;
+        arrangkakalkulasi[0, 3, 0, 0] = 20;
+        arrangkakalkulasi[0, 3, 0, 1] = 100;
         arrangkakalkulasi[0, 3, 0, 2] = 0;
-        arrangkakalkulasi[0, 3, 0, 3] = 0;
+        arrangkakalkulasi[0, 3, 0, 3] = 50;
 
-        arrangkakalkulasi[0, 3, 1, 0] = 0;
-        arrangkakalkulasi[0, 3, 1, 1] = 0;
+        arrangkakalkulasi[0, 3, 1, 0] = 40;
+        arrangkakalkulasi[0, 3, 1, 1] = 150;
         arrangkakalkulasi[0, 3, 1, 2] = 0;
-        arrangkakalkulasi[0, 3, 1, 3] = 0;
+        arrangkakalkulasi[0, 3, 1, 3] = 50;
 
         arrangkakalkulasi[0, 3, 2, 0] = 0;
         arrangkakalkulasi[0, 3, 2, 1] = 0;
@@ -157,170 +154,170 @@ public class GameManager : MonoBehaviour
 
         #region kasus1
         arrangkakalkulasi[1, 0, 0, 0] = 20;
-        arrangkakalkulasi[1, 0, 0, 1] = 100;
+        arrangkakalkulasi[1, 0, 0, 1] = -100;
         arrangkakalkulasi[1, 0, 0, 2] = 20;
-        arrangkakalkulasi[1, 0, 0, 3] = 100;
+        arrangkakalkulasi[1, 0, 0, 3] = -100;
 
         arrangkakalkulasi[1, 0, 1, 0] = 40;
-        arrangkakalkulasi[1, 0, 1, 1] = 100;
+        arrangkakalkulasi[1, 0, 1, 1] = -100;
         arrangkakalkulasi[1, 0, 1, 2] = 20;
-        arrangkakalkulasi[1, 0, 1, 3] = 100;
+        arrangkakalkulasi[1, 0, 1, 3] = -100;
 
         arrangkakalkulasi[1, 0, 2, 0] = 0;
-        arrangkakalkulasi[1, 0, 2, 1] = 100;
+        arrangkakalkulasi[1, 0, 2, 1] = -100;
         arrangkakalkulasi[1, 0, 2, 2] = 10;
-        arrangkakalkulasi[1, 0, 2, 3] = 100;
+        arrangkakalkulasi[1, 0, 2, 3] = -100;
 
         arrangkakalkulasi[1, 0, 3, 0] = 0;
-        arrangkakalkulasi[1, 0, 3, 1] = 0;
-        arrangkakalkulasi[1, 0, 3, 2] = 0;
-        arrangkakalkulasi[1, 0, 3, 3] = 0;
+        arrangkakalkulasi[1, 0, 3, 1] = -100;
+        arrangkakalkulasi[1, 0, 3, 2] = 30;
+        arrangkakalkulasi[1, 0, 3, 3] = -100;
 
 
         arrangkakalkulasi[1, 1, 0, 0] = 20;
-        arrangkakalkulasi[1, 1, 0, 1] = 200;
+        arrangkakalkulasi[1, 1, 0, 1] = -200;
         arrangkakalkulasi[1, 1, 0, 2] = 40;
-        arrangkakalkulasi[1, 1, 0, 3] = 200;
+        arrangkakalkulasi[1, 1, 0, 3] = -200;
 
         arrangkakalkulasi[1, 1, 1, 0] = 0;
-        arrangkakalkulasi[1, 1, 1, 1] = 200;
+        arrangkakalkulasi[1, 1, 1, 1] = -200;
         arrangkakalkulasi[1, 1, 1, 2] = 0;
-        arrangkakalkulasi[1, 1, 1, 3] = 200;
+        arrangkakalkulasi[1, 1, 1, 3] = -200;
 
         arrangkakalkulasi[1, 1, 2, 0] = 40;
-        arrangkakalkulasi[1, 1, 2, 1] = 400;
+        arrangkakalkulasi[1, 1, 2, 1] = -400;
         arrangkakalkulasi[1, 1, 2, 2] = 0;
-        arrangkakalkulasi[1, 1, 2, 3] = 200;
+        arrangkakalkulasi[1, 1, 2, 3] = -200;
 
         arrangkakalkulasi[1, 1, 3, 0] = 0;
-        arrangkakalkulasi[1, 1, 3, 1] = 0;
-        arrangkakalkulasi[1, 1, 3, 2] = 0;
-        arrangkakalkulasi[1, 1, 3, 3] = 0;
+        arrangkakalkulasi[1, 1, 3, 1] = -200;
+        arrangkakalkulasi[1, 1, 3, 2] = 60;
+        arrangkakalkulasi[1, 1, 3, 3] = -100;
 
 
         arrangkakalkulasi[1, 2, 0, 0] = 10;
-        arrangkakalkulasi[1, 2, 0, 1] = 100;
+        arrangkakalkulasi[1, 2, 0, 1] = -100;
         arrangkakalkulasi[1, 2, 0, 2] = 0;
-        arrangkakalkulasi[1, 2, 0, 3] = 100;
+        arrangkakalkulasi[1, 2, 0, 3] = -100;
 
         arrangkakalkulasi[1, 2, 1, 0] = 0;
-        arrangkakalkulasi[1, 2, 1, 1] = 200;
+        arrangkakalkulasi[1, 2, 1, 1] = -200;
         arrangkakalkulasi[1, 2, 1, 2] = 40;
-        arrangkakalkulasi[1, 2, 1, 3] = 400;
+        arrangkakalkulasi[1, 2, 1, 3] = -400;
 
         arrangkakalkulasi[1, 2, 2, 0] = 0;
-        arrangkakalkulasi[1, 2, 2, 1] = 0;
+        arrangkakalkulasi[1, 2, 2, 1] = -0;
         arrangkakalkulasi[1, 2, 2, 2] = 0;
-        arrangkakalkulasi[1, 2, 2, 3] = 0;
+        arrangkakalkulasi[1, 2, 2, 3] = -0;
 
         arrangkakalkulasi[1, 2, 3, 0] = 0;
-        arrangkakalkulasi[1, 2, 3, 1] = 0;
+        arrangkakalkulasi[1, 2, 3, 1] = -0;
         arrangkakalkulasi[1, 2, 3, 2] = 0;
-        arrangkakalkulasi[1, 2, 3, 3] = 0;
+        arrangkakalkulasi[1, 2, 3, 3] = -100;
 
 
-        arrangkakalkulasi[1, 3, 0, 0] = 0;
-        arrangkakalkulasi[1, 3, 0, 1] = 0;
+        arrangkakalkulasi[1, 3, 0, 0] = 30;
+        arrangkakalkulasi[1, 3, 0, 1] = -100;
         arrangkakalkulasi[1, 3, 0, 2] = 0;
-        arrangkakalkulasi[1, 3, 0, 3] = 0;
+        arrangkakalkulasi[1, 3, 0, 3] = -100;
 
-        arrangkakalkulasi[1, 3, 1, 0] = 0;
-        arrangkakalkulasi[1, 3, 1, 1] = 0;
+        arrangkakalkulasi[1, 3, 1, 0] = 60;
+        arrangkakalkulasi[1, 3, 1, 1] = -100;
         arrangkakalkulasi[1, 3, 1, 2] = 0;
-        arrangkakalkulasi[1, 3, 1, 3] = 0;
+        arrangkakalkulasi[1, 3, 1, 3] = -200;
 
         arrangkakalkulasi[1, 3, 2, 0] = 0;
-        arrangkakalkulasi[1, 3, 2, 1] = 0;
+        arrangkakalkulasi[1, 3, 2, 1] = -100;
         arrangkakalkulasi[1, 3, 2, 2] = 0;
-        arrangkakalkulasi[1, 3, 2, 3] = 0;
+        arrangkakalkulasi[1, 3, 2, 3] = -100;
 
         arrangkakalkulasi[1, 3, 3, 0] = 0;
-        arrangkakalkulasi[1, 3, 3, 1] = 0;
+        arrangkakalkulasi[1, 3, 3, 1] = -100;
         arrangkakalkulasi[1, 3, 3, 2] = 0;
-        arrangkakalkulasi[1, 3, 3, 3] = 0;
+        arrangkakalkulasi[1, 3, 3, 3] = -100;
         #endregion
 
         #region kasus2
         arrangkakalkulasi[2, 0, 0, 0] = 20;
-        arrangkakalkulasi[2, 0, 0, 1] = 100;
+        arrangkakalkulasi[2, 0, 0, 1] = -100;
         arrangkakalkulasi[2, 0, 0, 2] = 10;
         arrangkakalkulasi[2, 0, 0, 3] = 25;
 
         arrangkakalkulasi[2, 0, 1, 0] = 40;
-        arrangkakalkulasi[2, 0, 1, 1] = 100;
+        arrangkakalkulasi[2, 0, 1, 1] = -100;
         arrangkakalkulasi[2, 0, 1, 2] = 10;
         arrangkakalkulasi[2, 0, 1, 3] = 50;
 
         arrangkakalkulasi[2, 0, 2, 0] = 0;
-        arrangkakalkulasi[2, 0, 2, 1] = 100;
+        arrangkakalkulasi[2, 0, 2, 1] = -100;
         arrangkakalkulasi[2, 0, 2, 2] = 5;
         arrangkakalkulasi[2, 0, 2, 3] = 100;
 
         arrangkakalkulasi[2, 0, 3, 0] = 0;
-        arrangkakalkulasi[2, 0, 3, 1] = 0;
-        arrangkakalkulasi[2, 0, 3, 2] = 0;
-        arrangkakalkulasi[2, 0, 3, 3] = 0;
+        arrangkakalkulasi[2, 0, 3, 1] = -100;
+        arrangkakalkulasi[2, 0, 3, 2] = 20;
+        arrangkakalkulasi[2, 0, 3, 3] = 100;
 
 
         arrangkakalkulasi[2, 1, 0, 0] = 20;
-        arrangkakalkulasi[2, 1, 0, 1] = 200;
+        arrangkakalkulasi[2, 1, 0, 1] = -200;
         arrangkakalkulasi[2, 1, 0, 2] = 20;
         arrangkakalkulasi[2, 1, 0, 3] = 100;
 
         arrangkakalkulasi[2, 1, 1, 0] = 0;
-        arrangkakalkulasi[2, 1, 1, 1] = 200;
+        arrangkakalkulasi[2, 1, 1, 1] = -200;
         arrangkakalkulasi[2, 1, 1, 2] = 0;
         arrangkakalkulasi[2, 1, 1, 3] = 25;
 
         arrangkakalkulasi[2, 1, 2, 0] = 40;
-        arrangkakalkulasi[2, 1, 2, 1] = 400;
+        arrangkakalkulasi[2, 1, 2, 1] = -200;
         arrangkakalkulasi[2, 1, 2, 2] = 0;
         arrangkakalkulasi[2, 1, 2, 3] = 50;
 
         arrangkakalkulasi[2, 1, 3, 0] = 0;
-        arrangkakalkulasi[2, 1, 3, 1] = 0;
-        arrangkakalkulasi[2, 1, 3, 2] = 0;
-        arrangkakalkulasi[2, 1, 3, 3] = 0;
+        arrangkakalkulasi[2, 1, 3, 1] = -200;
+        arrangkakalkulasi[2, 1, 3, 2] = 40;
+        arrangkakalkulasi[2, 1, 3, 3] = 150;
 
 
         arrangkakalkulasi[2, 2, 0, 0] = 10;
-        arrangkakalkulasi[2, 2, 0, 1] = 100;
+        arrangkakalkulasi[2, 2, 0, 1] = -100;
         arrangkakalkulasi[2, 2, 0, 2] = 0;
         arrangkakalkulasi[2, 2, 0, 3] = 50;
 
         arrangkakalkulasi[2, 2, 1, 0] = 0;
-        arrangkakalkulasi[2, 2, 1, 1] = 200;
+        arrangkakalkulasi[2, 2, 1, 1] = -200;
         arrangkakalkulasi[2, 2, 1, 2] = 20;
         arrangkakalkulasi[2, 2, 1, 3] = 100;
 
         arrangkakalkulasi[2, 2, 2, 0] = 0;
-        arrangkakalkulasi[2, 2, 2, 1] = 0;
+        arrangkakalkulasi[2, 2, 2, 1] = -0;
         arrangkakalkulasi[2, 2, 2, 2] = 0;
         arrangkakalkulasi[2, 2, 2, 3] = 25;
 
         arrangkakalkulasi[2, 2, 3, 0] = 0;
-        arrangkakalkulasi[2, 2, 3, 1] = 0;
+        arrangkakalkulasi[2, 2, 3, 1] = -0;
         arrangkakalkulasi[2, 2, 3, 2] = 0;
         arrangkakalkulasi[2, 2, 3, 3] = 0;
 
 
-        arrangkakalkulasi[2, 3, 0, 0] = 0;
-        arrangkakalkulasi[2, 3, 0, 1] = 0;
+        arrangkakalkulasi[2, 3, 0, 0] = 30;
+        arrangkakalkulasi[2, 3, 0, 1] = -100;
         arrangkakalkulasi[2, 3, 0, 2] = 0;
-        arrangkakalkulasi[2, 3, 0, 3] = 0;
+        arrangkakalkulasi[2, 3, 0, 3] = 50;
 
-        arrangkakalkulasi[2, 3, 1, 0] = 0;
-        arrangkakalkulasi[2, 3, 1, 1] = 0;
+        arrangkakalkulasi[2, 3, 1, 0] = 60;
+        arrangkakalkulasi[2, 3, 1, 1] = -100;
         arrangkakalkulasi[2, 3, 1, 2] = 0;
-        arrangkakalkulasi[2, 3, 1, 3] = 0;
+        arrangkakalkulasi[2, 3, 1, 3] = 25;
 
         arrangkakalkulasi[2, 3, 2, 0] = 0;
-        arrangkakalkulasi[2, 3, 2, 1] = 0;
+        arrangkakalkulasi[2, 3, 2, 1] = -100;
         arrangkakalkulasi[2, 3, 2, 2] = 0;
         arrangkakalkulasi[2, 3, 2, 3] = 0;
 
         arrangkakalkulasi[2, 3, 3, 0] = 0;
-        arrangkakalkulasi[2, 3, 3, 1] = 0;
+        arrangkakalkulasi[2, 3, 3, 1] = -100;
         arrangkakalkulasi[2, 3, 3, 2] = 0;
         arrangkakalkulasi[2, 3, 3, 3] = 0;
         #endregion
@@ -329,85 +326,85 @@ public class GameManager : MonoBehaviour
         arrangkakalkulasi[3, 0, 0, 0] = 10;
         arrangkakalkulasi[3, 0, 0, 1] = 25;
         arrangkakalkulasi[3, 0, 0, 2] = 20;
-        arrangkakalkulasi[3, 0, 0, 3] = 100;
+        arrangkakalkulasi[3, 0, 0, 3] = -100;
 
         arrangkakalkulasi[3, 0, 1, 0] = 20;
         arrangkakalkulasi[3, 0, 1, 1] = 100;
         arrangkakalkulasi[3, 0, 1, 2] = 20;
-        arrangkakalkulasi[3, 0, 1, 3] = 100;
+        arrangkakalkulasi[3, 0, 1, 3] = -100;
 
         arrangkakalkulasi[3, 0, 2, 0] = 0;
         arrangkakalkulasi[3, 0, 2, 1] = 50;
         arrangkakalkulasi[3, 0, 2, 2] = 10;
-        arrangkakalkulasi[ 3, 0, 2, 3] = 100;
+        arrangkakalkulasi[ 3, 0, 2, 3] = -100;
 
         arrangkakalkulasi[3, 0, 3, 0] = 0;
-        arrangkakalkulasi[3, 0, 3, 1] = 0;
-        arrangkakalkulasi[3, 0, 3, 2] = 0;
-        arrangkakalkulasi[3, 0, 3, 3] = 0;
+        arrangkakalkulasi[3, 0, 3, 1] = 50;
+        arrangkakalkulasi[3, 0, 3, 2] = 30;
+        arrangkakalkulasi[3, 0, 3, 3] = -100;
 
 
         arrangkakalkulasi[3, 1, 0, 0] = 10;
         arrangkakalkulasi[3, 1, 0, 1] = 50;
         arrangkakalkulasi[3, 1, 0, 2] = 40;
-        arrangkakalkulasi[3, 1, 0, 3] = 200;
+        arrangkakalkulasi[3, 1, 0, 3] = -200;
 
         arrangkakalkulasi[3, 1, 1, 0] = 0;
         arrangkakalkulasi[3, 1, 1, 1] = 25;
         arrangkakalkulasi[3, 1, 1, 2] = 10;
-        arrangkakalkulasi[3, 1, 1, 3] = 200;
+        arrangkakalkulasi[3, 1, 1, 3] = -200;
 
         arrangkakalkulasi[3, 1, 2, 0] = 20;
         arrangkakalkulasi[3, 1, 2, 1] = 100;
         arrangkakalkulasi[3, 1, 2, 2] = 0;
-        arrangkakalkulasi[3, 1, 2, 3] = 200;
+        arrangkakalkulasi[3, 1, 2, 3] = -200;
 
         arrangkakalkulasi[3, 1, 3, 0] = 0;
-        arrangkakalkulasi[3, 1, 3, 1] = 0;
-        arrangkakalkulasi[3, 1, 3, 2] = 0;
-        arrangkakalkulasi[3, 1, 3, 3] = 0;
+        arrangkakalkulasi[3, 1, 3, 1] = 25;
+        arrangkakalkulasi[3, 1, 3, 2] = 60;
+        arrangkakalkulasi[3, 1, 3, 3] = -100;
 
     
         arrangkakalkulasi[3, 2, 0, 0] = 5;
         arrangkakalkulasi[3, 2, 0, 1] = 100;
         arrangkakalkulasi[3, 2, 0, 2] = 0;
-        arrangkakalkulasi[3, 2, 0, 3] = 100;
+        arrangkakalkulasi[3, 2, 0, 3] = -100;
 
         arrangkakalkulasi[3, 2, 1, 0] = 0;
         arrangkakalkulasi[3, 2, 1, 1] = 50;
         arrangkakalkulasi[3, 2, 1, 2] = 20;
-        arrangkakalkulasi[3, 2, 1, 3] = 400;
+        arrangkakalkulasi[3, 2, 1, 3] = -400;
 
         arrangkakalkulasi[3, 2, 2, 0] = 0;
         arrangkakalkulasi[3, 2, 2, 1] = 25;
         arrangkakalkulasi[3, 2, 2, 2] = 0;
-        arrangkakalkulasi[3, 2, 2, 3] = 0;
+        arrangkakalkulasi[3, 2, 2, 3] = -0;
         
         arrangkakalkulasi[3, 2, 3, 0] = 0;
         arrangkakalkulasi[3, 2, 3, 1] = 0;
         arrangkakalkulasi[3, 2, 3, 2] = 0;
-        arrangkakalkulasi[3, 2, 3, 3] = 0;
+        arrangkakalkulasi[3, 2, 3, 3] = -100;
 
 
-        arrangkakalkulasi[3, 3, 0, 0] = 0;
-        arrangkakalkulasi[3, 3, 0, 1] = 0;
+        arrangkakalkulasi[3, 3, 0, 0] = 20;
+        arrangkakalkulasi[3, 3, 0, 1] = 100;
         arrangkakalkulasi[3, 3, 0, 2] = 0;
-        arrangkakalkulasi[3, 3, 0, 3] = 0;
+        arrangkakalkulasi[3, 3, 0, 3] = -100;
 
-        arrangkakalkulasi[3, 3, 1, 0] = 0;
-        arrangkakalkulasi[3, 3, 1, 1] = 0;
+        arrangkakalkulasi[3, 3, 1, 0] = 40;
+        arrangkakalkulasi[3, 3, 1, 1] = 150;
         arrangkakalkulasi[3, 3, 1, 2] = 0;
-        arrangkakalkulasi[3, 3, 1, 3] = 0;
+        arrangkakalkulasi[3, 3, 1, 3] = -200;
 
         arrangkakalkulasi[3, 3, 2, 0] = 0;
         arrangkakalkulasi[3, 3, 2, 1] = 0;
         arrangkakalkulasi[3, 3, 2, 2] = 0;
-        arrangkakalkulasi[3, 3, 2, 3] = 0;
+        arrangkakalkulasi[3, 3, 2, 3] = -100;
 
         arrangkakalkulasi[3, 3, 3, 0] = 0;
         arrangkakalkulasi[3, 3, 3, 1] = 0;
         arrangkakalkulasi[3, 3, 3, 2] = 0;
-        arrangkakalkulasi[3, 3, 3, 3] = 0;
+        arrangkakalkulasi[3, 3, 3, 3] = -100;
         #endregion
     }
     void refreshcount() {
@@ -509,7 +506,6 @@ public class GameManager : MonoBehaviour
         prefabs.tblskill.SetActive(false);
         prefabs.attackButtons.gameObject.SetActive(true);
 
-        Debug.Log(player1.sp);
         if (player1.sp >= maxsp)
         {
             prefabs.tblskill.SetActive(true);
@@ -536,7 +532,7 @@ public class GameManager : MonoBehaviour
         int randomBotIdleChance = Random.Range(0, 5);
 
         int random = Random.Range(0, (randomBotIdleChance >= 4 ? 4 : 3));
-        Debug.Log(random);
+       // Debug.Log(random);
             switch (random)
             {
                 case 0:
@@ -571,7 +567,7 @@ public class GameManager : MonoBehaviour
 
         if (!player1.ultimate && player2.ultimate)
         {
-            kasus = 2;
+            kasus = 3;
             anicanvas.SetTrigger("p2");
             prefabs.kamera.transform.position = new Vector3(2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
@@ -580,7 +576,7 @@ public class GameManager : MonoBehaviour
 
         if (player1.ultimate && !player2.ultimate)
         {
-            kasus = 3;
+            kasus = 2;
             anicanvas.SetTrigger("p1");
             prefabs.kamera.transform.position = new Vector3(-2.35f, 0.32f, -10f);
             prefabs.kamera.GetComponent<Camera>().orthographicSize = 2.08f;
@@ -695,6 +691,7 @@ public class GameManager : MonoBehaviour
         int ubahsp2 = arrangkakalkulasi[kasus, movep1, movep2, 3];
         
         player1.sp += ubahsp1;
+        Debug.Log("kasus " + kasus + " move1 " + movep1 + " move2 " + movep2 +" kurangi " + ubahsp1);
         player2.sp += ubahsp2;
         prefabs.sp.value = player1.sp;
 
@@ -706,7 +703,6 @@ public class GameManager : MonoBehaviour
         player2.hp -= ubahhpp2 ;
         updatehealthbar(prefabs.p2hp, tempHp2, player2.hp);
 
-        //updatehealthbar();
     }
     public void useskill(int pemainke)
     {
@@ -718,12 +714,10 @@ public class GameManager : MonoBehaviour
                     prefabs.doubledamage.SetActive(true);
                     prefabs.tblskill.SetActive(false);
                     player1.ultimate = true;
-                    player1.sp = 0;
                     prefabs.sp.value = player1.sp;
                     break;
                 case 2:
                     player2.ultimate = true;
-                    player2.sp = 0;
                     break;
                 default:
                     break;
